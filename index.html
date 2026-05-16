@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Siete meses contigo 💗</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: "Georgia", serif;
+    }
+
+    body{
+      min-height:100vh;
+      background: radial-gradient(circle at top, #1a0033, #070014, #000);
+      color:#fff;
+      overflow-x:hidden;
+      padding: 40px 15px;
+      position: relative;
+    }
+
+    /* estrellas */
+    .stars{
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:-3;
+      background: transparent;
+      overflow:hidden;
+    }
+
+    .star{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:white;
+      border-radius:50%;
+      opacity:0.8;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle{
+      0%,100%{opacity:0.2; transform: scale(1);}
+      50%{opacity:1; transform: scale(1.6);}
+    }
+
+    /* corazones flotando */
+    .heart{
+      position: fixed;
+      bottom:-50px;
+      font-size: 18px;
+      color: rgba(255, 0, 120, 0.7);
+      animation: floatUp 8s linear infinite;
+      z-index:-2;
+    }
+
+    @keyframes floatUp{
+      0%{transform: translateY(0) scale(1); opacity:0;}
+      10%{opacity:1;}
+      100%{transform: translateY(-120vh) scale(1.8); opacity:0;}
+    }
+
+    .container{
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom: 30px;
+      padding: 20px;
+    }
+
+    header h1{
+      font-size: 2.4rem;
+      color: #ffb3ff;
+      text-shadow: 0 0 10px rgba(255, 120, 255, 0.5);
+      margin-bottom: 10px;
+    }
+
+    header p{
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      font-style: italic;
+    }
+
+    .counter-box{
+      margin: 25px auto;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 18px;
+      max-width: 650px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px rgba(255, 0, 200, 0.12);
+    }
+
+    .counter-box h2{
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #ffd6ff;
+    }
+
+    .counter{
+      display:flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .time{
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 10px 14px;
+      min-width: 110px;
+      text-align:center;
+    }
+
+    .time span{
+      display:block;
+      font-size: 1.6rem;
+      font-weight:bold;
+      color:#ff99ff;
+    }
+
+    .time small{
+      font-size:0.85rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .letter{
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 25px;
+      padding: 35px 28px;
+      margin-top: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 35px rgba(255, 0, 150, 0.15);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .letter:before{
+      content:"";
+      position:absolute;
+      top:-80px;
+      left:-80px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,0,200,0.4), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .letter:after{
+      content:"";
+      position:absolute;
+      bottom:-80px;
+      right:-80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255,150,255,0.3), transparent 70%);
+      filter: blur(10px);
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform: translateY(20px);}
+      to{opacity:1; transform: translateY(0);}
+    }
+
+    .letter h2{
+      font-size: 1.6rem;
+      text-align:center;
+      color:#ffe0ff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px rgba(255,0,255,0.3);
+    }
+
+    .letter h3{
+      text-align:center;
+      font-size: 1rem;
+      font-weight: normal;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    .letter p{
+      line-height: 1.75;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .signature{
+      margin-top: 30px;
+      text-align:center;
+      font-size: 1.2rem;
+      color:#ffb3ff;
+      font-weight: bold;
+      text-shadow: 0 0 12px rgba(255, 0, 255, 0.3);
+    }
+
+    .reasons{
+      margin-top: 35px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .reasons h2{
+      text-align:center;
+      color:#ffd6ff;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+
+    .reasons ul{
+      list-style:none;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+
+    .reasons li{
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 0 20px rgba(255, 0, 200, 0.07);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .footer{
+      margin-top: 35px;
+      text-align:center;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .btn{
+      margin-top: 15px;
+      display:inline-block;
+      padding: 12px 18px;
+      border-radius: 18px;
+      background: rgba(255, 0, 200, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      text-decoration:none;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+      cursor:pointer;
+    }
+
+    .btn:hover{
+      background: rgba(255, 0, 200, 0.30);
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+
+    <header>
+      <h1>💗 Para MI NIÑA LINDA 💗</h1>
+      <p>Un regalo digital… pero hecho con el corazón.</p>
+
+      <div class="counter-box">
+        <h2>⏳ Tiempo desde que empezó nuestra historia</h2>
+        <div class="counter">
+          <div class="time"><span id="days">0</span><small>Días</small></div>
+          <div class="time"><span id="hours">0</span><small>Horas</small></div>
+          <div class="time"><span id="minutes">0</span><small>Minutos</small></div>
+          <div class="time"><span id="seconds">0</span><small>Segundos</small></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="letter">
+      <h2>Siete meses contigo</h2>
+      <h3>(Carta especial — para el amor que ya es hogar)</h3>
+
+      <p>Mi amor,</p>
+
+      <p>
+        Hoy cumplimos siete meses… y no sé cómo explicarlo sin que se me apriete el pecho,
+        porque esto no se siente como una simple fecha… se siente como un milagro repetido.
+        Como si el destino, por fin, hubiera decidido dejar de jugar conmigo… y me hubiera dicho:
+        “toma, aquí está la persona que estabas esperando”.
+      </p>
+
+      <p>
+        Siete meses contigo… y aún me sorprende lo mucho que puedes cambiar mi mundo con algo tan pequeño
+        como tu voz, tu risa, tu forma de mirarme… tu manera de existir.
+      </p>
+
+      <p>
+        Porque tú no llegaste a mi vida a “acompañar”… tú llegaste a llenarla.
+      </p>
+
+      <p>
+        Llegaste como llegan las cosas que son verdaderas: sin pedir permiso, sin hacer ruido…
+        pero quedándote en todas partes.
+      </p>
+
+      <p>
+        Y hoy quiero decirte algo con el corazón completamente abierto:
+      </p>
+
+      <p><b>gracias.</b></p>
+
+      <p>
+        Gracias por estos siete meses de amor, de paciencia, de ternura…
+        gracias por no rendirte cuando yo estaba cansado, cuando estaba enredado en mis pensamientos,
+        cuando el mundo me pesaba.
+      </p>
+
+      <p>
+        Gracias por ser tú… incluso cuando nadie te está mirando.
+      </p>
+
+      <p>
+        Porque eso es lo que más amo de ti:
+        que tu belleza no es solo física… tu belleza es de alma.
+      </p>
+
+      <p>
+        Es de esas que se sienten. De esas que abrazan. De esas que curan.
+      </p>
+
+      <p><b>Mi amor…</b></p>
+
+      <p>
+        A veces me pongo a pensar en todo lo que hemos vivido en tan poco tiempo…
+        y siento que contigo el tiempo corre distinto. Como si los días contigo valieran por meses,
+        y los momentos contigo fueran más intensos que cualquier cosa que yo haya conocido.
+      </p>
+
+      <p>
+        Siete meses… y ya sé que mi lugar favorito no es un sitio… mi lugar favorito eres tú.
+      </p>
+
+      <p>
+        Porque cuando estoy contigo, incluso si no hablamos, yo siento paz.
+        Y cuando no estás, hasta el silencio se siente raro… porque le falta tu presencia.
+      </p>
+
+      <p>
+        Tú eres esa parte bonita de mi vida que me hace creer en el amor de verdad.
+        Ese amor que no solo se dice… se demuestra.
+      </p>
+
+      <p>
+        Y yo te lo demuestro cada vez que te pienso, cada vez que te extraño, cada vez que te elijo.
+      </p>
+
+      <p>
+        Porque sí, mi amor… yo te elijo.
+      </p>
+
+      <p>
+        Te elijo incluso en los días difíciles. Te elijo cuando hay problemas.
+        Te elijo cuando estás sensible. Te elijo cuando el mundo me pone pesado.
+      </p>
+
+      <p>
+        Te elijo porque tú no eres una etapa… tú eres una decisión del corazón.
+      </p>
+
+      <p>
+        Y si pudiera pedirle algo al universo, no sería riqueza ni suerte…
+      </p>
+
+      <p>
+        Sería que la vida me deje seguir sumando meses contigo.
+        Que me deje seguir amándote así… con esta intensidad que no se apaga,
+        con esta necesidad bonita de cuidarte, con estas ganas eternas de verte sonreír.
+      </p>
+
+      <p>
+        Porque tú mereces un amor que te trate como lo que eres:
+        <b>algo único.</b> Algo que no se repite.
+      </p>
+
+      <p><b>Mi amor…</b></p>
+
+      <p>
+        Siete meses y todavía me tiemblan las manos cuando te escribo.
+        Siete meses y todavía me emociono como el primer día.
+        Siete meses y todavía siento que mi corazón se acelera cuando pienso en ti.
+      </p>
+
+      <p>
+        Y si eso no es amor… entonces el amor no existe.
+      </p>
+
+      <p>
+        Hoy quiero que lo sepas bien claro:
+      </p>
+
+      <p>
+        <b>yo estoy orgulloso de amarte.</b><br>
+        Orgulloso de tenerte.<br>
+        Orgulloso de llamarte mi novia.<br>
+        Orgulloso de cuidarte.
+      </p>
+
+      <p>
+        Porque tú eres mi persona favorita… mi pensamiento más bonito…
+        mi deseo más sincero… y mi futuro más esperado.
+      </p>
+
+      <p>
+        Y aunque no pueda prometerte que la vida será perfecta…
+        sí puedo prometerte algo más real:
+      </p>
+
+      <p>
+        Que mientras yo esté aquí, tú no vas a amar sola.<br>
+        Que mientras yo respire, tú tendrás un corazón que te cuide.<br>
+        Que mientras el mundo exista, yo voy a seguir buscando maneras de hacerte sentir especial…
+        porque tú eres mi amor… y mi amor por ti no sabe ser pequeño.
+      </p>
+
+      <p>
+        Feliz siete meses, mi vida.
+      </p>
+
+      <p>
+        Que vengan muchos más… pero no solo meses…
+      </p>
+
+      <p>
+        Que vengan años, que venga una historia completa,
+        que venga un “para siempre” sin miedo…
+        y que venga un futuro donde tú y yo sigamos siendo esto:
+      </p>
+
+      <p>
+        dos almas que se encontraron… y decidieron no soltarse jamás.
+      </p>
+
+      <p>
+        Con todo lo que soy, con todo lo que siento,
+        y con todo lo que mi corazón te pertenece…
+      </p>
+
+      <p class="signature">Te amo. 💗</p>
+    </section>
+
+    <section class="reasons">
+      <h2>✨ 7 cosas que amo de ti ✨</h2>
+      <ul>
+        <li>💗 Tu forma de mirarme, como si yo fuera tu mundo.</li>
+        <li>🌙 Tu ternura, incluso cuando estás cansada.</li>
+        <li>🔥 Tu manera de hacerme sentir amado.</li>
+        <li>🌸 Tu corazón bonito, que siempre brilla.</li>
+        <li>💎 Lo única que eres… y lo mucho que vales.</li>
+        <li>🤍 Que contigo la paz existe.</li>
+        <li>♾️ Que contigo quiero un para siempre.</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      <p>Hecho con amor, desde el primer día: <b>17 de octubre de 2025</b> 💗</p>
+
+      <button class="btn" onclick="copyLink()">📌 Copiar link (cuando esté publicado)</button>
+      <p id="copyMsg" style="margin-top:10px; font-size:0.9rem; color:rgba(255,255,255,0.8);"></p>
+    </div>
+
+  </div>
+
+  <script>
+    // ESTRELLAS
+    const starsContainer = document.getElementById("stars");
+    for(let i=0; i<120; i++){
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDelay = (Math.random() * 3) + "s";
+      starsContainer.appendChild(star);
+    }
+
+    // CORAZONES FLOTANTES
+    function createHeart(){
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 12) + "px";
+      heart.style.animationDuration = (Math.random() * 4 + 6) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 500);
+
+    // CONTADOR DESDE EL 17 OCT 2025 21:00
+    const startDate = new Date("2025-10-17T21:00:00");
+
+    function updateCounter(){
+      const now = new Date();
+      let diff = now - startDate;
+
+      if(diff < 0) diff = 0;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // COPIAR LINK
+    function copyLink(){
+      navigator.clipboard.writeText(window.location.href);
+      document.getElementById("copyMsg").innerText = "💗 Link copiado. Ahora solo envíaselo a tu niña linda.";
+    }
+  </script>
+
+</body>
+  </html>
