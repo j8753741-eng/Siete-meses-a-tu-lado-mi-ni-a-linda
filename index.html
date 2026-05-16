@@ -478,10 +478,11 @@
     </section>
 
     <div class="footer">
-      <p>Hecho con amor, desde el primer día: <b>17 de octubre de 2025</b> 💗</p>
-
-      <button class="btn" onclick="copyLink()">📌 Copiar link (cuando esté publicado)</button>
-      <p id="copyMsg" style="margin-top:10px; font-size:0.9rem; color:rgba(255,255,255,0.8);"></p>
+  <p>Hecho con amor, desde el primer día: <b>17 de octubre de 2025</b> 💗</p>
+  <p style="margin-top:12px; font-style:italic; color:rgba(255,255,255,0.85);">
+    “Si algún día el mundo se pone frío… entra aquí,  
+    y recuerda que mi corazón siempre será tu hogar.”
+  </p>
     </div>
 
   </div>
@@ -538,11 +539,7 @@
     setInterval(updateCounter, 1000);
     updateCounter();
 
-    // COPIAR LINK
-    function copyLink(){
-      navigator.clipboard.writeText(window.location.href);
-      document.getElementById("copyMsg").innerText = "💗 Link copiado. Ahora solo envíaselo a tu niña linda.";
-    }
+  
   </script>
 
 </body>
